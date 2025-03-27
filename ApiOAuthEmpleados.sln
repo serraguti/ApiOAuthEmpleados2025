@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiOAuthEmpleados", "ApiOAuthEmpleados\ApiOAuthEmpleados.csproj", "{EE68D0E1-9F72-4403-A0BF-9D20BD7656BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE68D0E1-9F72-4403-A0BF-9D20BD7656BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE68D0E1-9F72-4403-A0BF-9D20BD7656BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE68D0E1-9F72-4403-A0BF-9D20BD7656BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE68D0E1-9F72-4403-A0BF-9D20BD7656BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
