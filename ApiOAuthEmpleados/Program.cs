@@ -3,6 +3,8 @@ using ApiOAuthEmpleados.Helpers;
 using ApiOAuthEmpleados.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using NSwag.Generation.Processors.Security;
+using NSwag;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,26 @@ builder.Services.AddAuthentication(helper.GetAuthenticateSchema())
     .AddJwtBearer(helper.GetJwtBearerOptions());
 
 // Add services to the container.
+builder.Services.AddOpenApiDocument(document =>
+{
+    document.Title = "Api OAuth Empleados";
+    document.Description = "Api con seguridad 2025";
+    // CONFIGURAMOS LA SEGURIDAD JWT PARA SWAGGER,
+    // PERMITE AÑADIR EL TOKEN JWT A LA CABECERA.
+    document.AddSecurity("JWT", Enumerable.Empty<string>(),
+        new NSwag.OpenApiSecurityScheme
+        {
+            Type = OpenApiSecuritySchemeType.ApiKey,
+            Name = "Authorization",
+            In = OpenApiSecurityApiKeyLocation.Header,
+            Description = "Copia y pega el Token en el campo 'Value:' así: Bearer {Token JWT}."
+        }
+    );
+    document.OperationProcessors.Add(
+    new AspNetCoreOperationSecurityScopeProcessor("JWT"));
+});
+
+
 string connectionString =
     builder.Configuration.GetConnectionString("SqlAzure");
 builder.Services.AddTransient<RepositoryHospital>();
@@ -33,6 +55,7 @@ if (app.Environment.IsDevelopment())
 {
 
 }
+app.UseOpenApi();
 app.MapOpenApi();
 app.UseHttpsRedirection();
 
