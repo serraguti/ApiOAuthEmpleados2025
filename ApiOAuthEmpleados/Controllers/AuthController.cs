@@ -51,10 +51,12 @@ namespace ApiOAuthEmpleados.Controllers
                 //CONVERTIMOS A JSON LOS DATOS DEL EMPLEADO
                 string jsonEmpleado =
                     JsonConvert.SerializeObject(empleado);
+
                 //CREAMOS UN ARRAY DE CLAIMS
                 Claim[] informacion = new[]
                 {
                     new Claim("UserData", jsonEmpleado)
+                    //new Claim(ClaimTypes.Role, empleado.Oficio)
                 };
                 //EL TOKEN SE GENERA CON UNA CLASE
                 //Y DEBEMOS INDICAR LOS DATOS QUE ALMACENARA EN SU 
